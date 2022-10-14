@@ -43,14 +43,13 @@
       >新增</el-button
     ><br />
     <!--表格-->
-    <el-table :data="retailers" style="width: 870px" stripe>
-      <el-table-column
-        fixed
-        prop="name"
-        label="姓名"
-        width="120"
-        align="center"
-      >
+    <el-table :data="retailers" style="width: 930px" stripe>
+      <el-table-column label="序号" width="60" align="center">
+        <template slot-scope="scope">
+          {{ scope.$index + 1 }}
+        </template>
+      </el-table-column>
+      <el-table-column prop="name" label="姓名" width="120" align="center">
       </el-table-column>
       <el-table-column prop="telphone" label="手机" width="120" align="center">
       </el-table-column>
@@ -189,13 +188,13 @@ export default {
       total: 1,
       //模糊搜索条件
       fuzzy: {
-        name: "",
-        telphone: "",
-        address: "",
-        status: "",
-        createtime: "",
-        pageNum: "",
-        pageSize: "",
+        // name: "",
+        // telphone: "",
+        // address: "",
+        // status: "",
+        // createtime: "",
+        // pageNum: "",
+        // pageSize: "",
       },
       //记录当前是否是模糊搜索
       isFuzzy: false,
@@ -299,7 +298,7 @@ export default {
     handleAdd() {
       this.addDialogVisible = true;
     },
-    //确定新增
+    //确认新增
     commitAdd() {
       this.addDialogVisible = false;
       insert(this.addRetailer).then((response) => {
