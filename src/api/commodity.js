@@ -9,6 +9,23 @@ export function findPages(pageNum, pageSize) {
   });
 }
 
+//获取列表数据
+export function findFruitList() {
+  return request({
+    url: "/commodity/findList",
+    method: "get",
+  });
+}
+
+//模糊查询列表数据
+export function findFruitListByKey(key) {
+  return request({
+    url: "/commodity/findListByKey",
+    method: "get",
+    params: { key: key },
+  });
+}
+
 //删除
 export function deleteOne(fruitid) {
   return request({

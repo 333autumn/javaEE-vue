@@ -9,6 +9,14 @@ export function findPages(pageNum, pageSize) {
   });
 }
 
+//获取列表数据
+export function findList() {
+  return request({
+    url: "/retailer/findList",
+    method: "get",
+  });
+}
+
 //改变启用状态
 export function change(retailerid) {
   return request({

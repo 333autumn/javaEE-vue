@@ -28,16 +28,17 @@
       value-format="yyyy-MM-dd"
     >
     </el-date-picker>
+    <br />
     <el-button
       type="primary"
-      size="small"
+      size="medium"
       @click="handleSearch"
       style="margin-left: 10px"
       >搜索</el-button
     >
     <el-button
       type="primary"
-      size="small"
+      size="medium"
       @click="handleAdd"
       style="margin-left: 10px"
       >新增</el-button
@@ -86,7 +87,7 @@
             编辑
           </el-button>
           <el-popconfirm
-            title="确定删除吗？"
+            title="确定要删除吗？"
             @onConfirm="handleDelete(scope.row.retailerid)"
           >
             <el-button type="danger" size="small" slot="reference">

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>水果网络销售平台</h1>
+    <!-- <h1>水果网络销售平台</h1> -->
     <!--导航栏部分-->
-    <el-menu
+    <!-- <el-menu
       class="el-menu-demo"
       mode="horizontal"
       background-color="#545c64"
@@ -17,8 +17,37 @@
       <el-menu-item index="3" @click="goToContract">购销合同</el-menu-item>
       <el-menu-item index="4" @click="goToUser">用户设置</el-menu-item>
     </el-menu>
-    <h3>欢迎您,{{ user.name }}</h3>
-    <router-view></router-view>
+    <h3>欢迎您,{{ user.name }}</h3> -->
+    <!-- <router-view></router-view> -->
+    <el-container>
+      <el-aside width="150px">
+        <el-menu
+          class="el-menu-demo"
+          background-color="#545c64"
+          text-color="#fff"
+          active-text-color="#ffd04b"
+          style="height: 100%"
+        >
+          <el-menu-item index="1" @click="goToGoodsManage"
+            >货物管理</el-menu-item
+          >
+          <el-menu-item index="2" @click="goToRetailerManage"
+            >零售商管理</el-menu-item
+          >
+          <el-menu-item index="3" @click="goToContract">购销合同</el-menu-item>
+          <el-menu-item index="4" @click="goToUser">用户设置</el-menu-item>
+        </el-menu></el-aside
+      >
+      <el-container
+        ><el-header
+          ><h1>
+            水果网络销售平台&nbsp;&nbsp;&nbsp;&nbsp;欢迎您,{{ user.name }}
+          </h1></el-header
+        >
+        <el-main
+          ><el-card> <router-view></router-view> </el-card></el-main
+      ></el-container>
+    </el-container>
   </div>
 </template>
 
@@ -58,4 +87,8 @@ export default {
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.el-menu {
+  text-align: center;
+}
+</style>

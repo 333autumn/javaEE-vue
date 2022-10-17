@@ -17,3 +17,12 @@ export function register(data) {
     data,
   });
 }
+
+//修改用户信息
+export function update(data) {
+  return request({
+    url: "/user/update",
+    method: "post",
+    data,
+  });
+}

@@ -24,29 +24,29 @@
     创建日期:
     <el-date-picker
       v-model="fuzzy.startTime"
-      type="datetime"
+      type="date"
       placeholder="最早"
-      value-format="yyyy-MM-dd HH:mm:ss"
+      value-format="yyyy-MM-dd"
     >
     </el-date-picker
     >-
     <el-date-picker
       v-model="fuzzy.endTime"
-      type="datetime"
+      type="date"
       placeholder="最晚"
-      value-format="yyyy-MM-dd HH:mm:ss"
+      value-format="yyyy-MM-dd"
     >
     </el-date-picker>
     <el-button
       type="primary"
-      size="small"
+      size="medium"
       @click="handleSearch"
       style="margin-left: 10px"
       >搜索</el-button
     >
     <el-button
       type="primary"
-      size="small"
+      size="medium"
       @click="handleAdd"
       style="margin-left: 10px"
       >新增</el-button
@@ -82,7 +82,7 @@
             编辑
           </el-button>
           <el-popconfirm
-            title="确定删除吗？"
+            title="确定要删除吗？"
             @onConfirm="handleDelete(scope.row.fruitid)"
           >
             <el-button
@@ -98,7 +98,7 @@
             type="primary"
             size="small"
             style="margin-right: 5px"
-            @click="handleEdit(scope.row)"
+            @click="showAccessory(scope.row.fruitid)"
           >
             附属品
           </el-button>
@@ -160,13 +160,17 @@
         <el-button type="primary" @click="commitAdd">确 定</el-button>
       </div>
     </el-dialog>
+    <!--附属品管理对话框-->
+    <Accessory ref="accessoryRef"></Accessory>
   </div>
 </template>
 
 <script>
 import { findPages, fuzzy, update, insert, deleteOne } from "@/api/commodity";
+import Accessory from "@/components/accessory.vue";
 export default {
   name: "GoodsManage",
+  components: { Accessory },
 
   data() {
     return {
@@ -253,7 +257,7 @@ export default {
         this.refresh();
       });
     },
-    //取消编辑
+    //取消
     cancel() {
       this.editDialogVisible = false;
       this.addDialogVisible = false;
@@ -285,8 +289,12 @@ export default {
         }
       });
     },
+    //点击附属品按钮调用
+    showAccessory(fruitid) {
+      this.$refs.accessoryRef.show(fruitid);
+    },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped></style>
